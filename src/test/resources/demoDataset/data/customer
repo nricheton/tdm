@@ -1,0 +1,10 @@
+{
+   type : "customer", 
+   data : {
+   
+     firstName : "John",
+     lastName : "Doe"
+   } 
+   
+   
+}
