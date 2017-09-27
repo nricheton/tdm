@@ -27,6 +27,8 @@ public class CustomerUnitTestFactory implements DataFactory {
 
 		Customer c = customerService.create(UUID.randomUUID() + "@test.org", values.get("firstName"),
 				values.get("lastName"));
+		c.setEnabled(Boolean.getBoolean(values.get("enabled")));
+		c.setPassword(values.get("password"));
 		data.add(type, c.getEmail());
 	}
 

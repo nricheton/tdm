@@ -2,11 +2,13 @@ package org.tdm.demo.tests;
 
 import java.util.Arrays;
 
+import javax.security.auth.login.CredentialException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.tdm.core.DataFactory;
-import org.tdm.core.Maps;
+import static org.tdm.core.Maps.*;
 import org.tdm.core.TdmManager;
 import org.tdm.core.TestData;
 import org.tdm.core.impl.DummyDataset;
@@ -43,14 +45,20 @@ public class DemoTest {
 		Assert.assertTrue(cServ.get(dataId.id("customer")).getFirstName().length() > 0);
 		Assert.assertTrue(cServ.get(dataId.id("customer")).getLastName().length() > 0);
 	}
-	
+
 	@Test
 	public void test2() {
-		TestData dataId = tdm.create("customer", Maps.map( "firstName", "Mike"));
+		TestData dataId = tdm.create("customer", map("firstName", "Mike"));
 
-		Assert.assertNotNull(cServ.get(dataId.id("customer")));
 		Assert.assertEquals("Mike", cServ.get(dataId.id("customer")).getFirstName());
-		Assert.assertTrue(cServ.get(dataId.id("customer")).getLastName().length() > 0);
+	}
+
+	@Test(expected = CredentialException.class)
+	public void test3() throws CredentialException {
+		TestData dataId = tdm.create("customer", map("enabled", "false", //
+				"password", "test"));
+
+		authServ.login(dataId.id("customer"), "test");
 	}
 
 }
