@@ -14,6 +14,32 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Dataset using json files from classpath.
+ * 
+ * <p>
+ * Layout
+ * <ul>
+ * 	<li>dataset.json</li>
+ * 	<li>objects/
+ * 		<ul>
+ * 			<li>&lt;name1&gt;/
+ * 				<ul>
+ * 					<li>data1.json</li>
+ * 					<li>data2.json</li>
+ * 				</ul>
+ * 			</li>
+ * 			<li>&lt;name2&gt;/
+ * 				<ul>
+ * 					<li>data1.json</li>
+ * 					<li>data2.json</li>
+ * 				</ul>
+ * 			</li>
+ * 		</ul>
+ * 	</li>
+ * </ul>
+ * @author nricheton
+ */
 public class JsonClasspathDataset extends AbstractDataset {
 	String root;
 	ObjectMapper mapper;
@@ -23,8 +49,6 @@ public class JsonClasspathDataset extends AbstractDataset {
 		mapper = new ObjectMapper();
 
 	}
-
-	
 
 	@Override
 	protected List<Map<String, Object>> readObjects() throws java.io.IOException {

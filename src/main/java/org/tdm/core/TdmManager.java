@@ -13,10 +13,7 @@ public interface TdmManager {
 	
 	TdmBuilder create();
 	
-	@Deprecated
-	TestData create( String type ) throws IOException; 
-	@Deprecated
-	TestData create( String type , Map<String,Object> values) throws IOException; 
+	
 	TestData create( String[] type , Map<String,Object>[] values) throws IOException; 
 	
 }

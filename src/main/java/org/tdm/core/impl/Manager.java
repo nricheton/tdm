@@ -27,17 +27,13 @@ public class Manager implements TdmManager {
 		this.datasets = datasets;
 	}
 
-	public TestData create(String type) throws IOException {
-		return create(type, new HashMap<String, Object>());
-	}
-
 	public void init() throws IOException {
 		for (TdmDataset d : datasets) {
 			d.init();
 		}
 	}
 
-	public TestData create(String type, Map<String, Object> values) throws IOException {
+	protected TestData create(String type, Map<String, Object> values) throws IOException {
 		TestData result = new TestDataImpl();
 
 		// Get data

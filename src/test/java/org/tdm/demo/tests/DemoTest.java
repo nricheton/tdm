@@ -51,6 +51,11 @@ public class DemoTest {
 		tdm.init();
 	}
 
+	/**
+	 * Basic usage, no data customization.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test1() throws IOException {
 		TestData dataId = tdm.create().with("customer").perform();
@@ -81,6 +86,11 @@ public class DemoTest {
 		Assert.assertEquals("Mike", cServ.get(dataId.id("customer")).getFirstName());
 	}
 
+	/**
+	 * Creating multiple data at once.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test5() throws IOException {
 		TestData dataId = tdm.create()//
@@ -94,6 +104,11 @@ public class DemoTest {
 
 	}
 
+	/**
+	 * Creating data with several lines, linking to objects of previous lines.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test6() throws IOException {
 		TestData dataId = tdm.create().with("customer").perform();
