@@ -1,5 +1,6 @@
 package org.tdm.core;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -7,9 +8,15 @@ public interface TdmManager {
 
 	void setDataFactories(List<DataFactory> factories);
 	
-	void setDataset( TdmDataset dataset );
+	void setDatasets( TdmDataset... datasets );
+	void init() throws IOException;
 	
-	TestData create( String type ); 
-	TestData create( String type , Map<String,String> values); 
+	TdmBuilder create();
+	
+	@Deprecated
+	TestData create( String type ) throws IOException; 
+	@Deprecated
+	TestData create( String type , Map<String,Object> values) throws IOException; 
+	TestData create( String[] type , Map<String,Object>[] values) throws IOException; 
 	
 }

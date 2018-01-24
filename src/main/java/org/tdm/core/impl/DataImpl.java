@@ -6,13 +6,22 @@ import org.tdm.core.Data;
 
 public class DataImpl implements Data {
 	String type;
-	Map<String, String> values;
+	String dataName;
+	Map<String, Object> values;
+
+	public String getDataName() {
+		return dataName;
+	}
+
+	public void setDataName(String name) {
+		this.dataName = name;
+	}
 
 	public String getType() {
 		return type;
 	}
 
-	public Map<String, String> getValues() {
+	public Map<String, Object> getValues() {
 		return values;
 	}
 
@@ -20,8 +29,14 @@ public class DataImpl implements Data {
 		this.type = type;
 	}
 
-	public void setValues(Map<String, String> values) {
+	public void setValues(Map<String, Object> values) {
 		this.values = values;
 	}
+
+	@Override
+	public String toString() {
+		return "[type=" + type + ", dataName=" + dataName + ", values=" + values + "]";
+	}
+	
 
 }

@@ -1,0 +1,16 @@
+{
+	"objects": [
+		{
+			"customer": [
+				"john",
+				"mikeAdmin"
+			]
+		},
+		{
+			"order": [
+				"computer"
+			]
+		}
+	],
+	"sets": []
+}
