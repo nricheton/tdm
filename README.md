@@ -33,11 +33,11 @@ Data are based on logical objects, not technical implementation, expressed by js
   
 
 	{  
-    		"firstName" : "John",
-    		"lastName" : "Doe",
-	 	"enabled" : true,  
-   		"password" : "password", 
-   		"groups" : [ "user" ]
+		"firstName" : "John",
+		"lastName" : "Doe",
+		"enabled" : true,  
+		"password" : "password", 
+		"groups" : [ "user" ]
 	}
 	
 
