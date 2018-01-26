@@ -51,7 +51,7 @@ public class Manager implements TdmManager {
 
 		for (DataFactory f : factories) {
 			if (f.getTypes().contains(data.getType())) {
-				f.create(result, type, data.getValues());
+				f.create(result, data.getType(), data.getValues());
 			}
 		}
 

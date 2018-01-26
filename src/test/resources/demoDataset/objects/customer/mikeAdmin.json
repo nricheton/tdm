@@ -1,8 +1,7 @@
-{
-   
-    firstName : "John",
-    lastName : "Doe",
- 	enabled : true,  
-   	password : "password", 
-   	groups : [ "user" ],
+{ 
+    "firstName" : "Mike",
+    "lastName" : "Brown",
+ 	"enabled" : true,  
+   	"password" : "password", 
+   	"groups" : [ "admin" ]
 }
