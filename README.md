@@ -1,5 +1,6 @@
 # tdm - Test Data Manager
 
+[![Build Status: Linux](https://travis-ci.org/nricheton/tdm.svg?branch=master)](https://travis-ci.org/nricheton/tdm)
 
 For tests like this : 
 
