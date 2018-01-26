@@ -3,6 +3,15 @@ package org.tdm.demo.app;
 public class Customer {
 	String email, password, firstName, lastName;
 	boolean enabled;
+	Address address;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public String getEmail() {
 		return email;

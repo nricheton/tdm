@@ -1,8 +1,14 @@
 {
-   
-    "firstName" : "John",
-    "lastName" : "Doe",
- 	"enabled" : true,  
-   	"password" : "password", 
-   	"groups" : [ "user" ]
+	"firstName": "John",
+	"lastName": "Doe",
+	"enabled": true,
+	"address": {
+		"street": "514 S. Magnolia St.",
+		"city": "Orlando",
+		"postalCode": "FL 32806"
+	},
+	"password": "password",
+	"groups": [
+		"user"
+	]
 }

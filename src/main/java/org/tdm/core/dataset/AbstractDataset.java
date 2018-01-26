@@ -53,7 +53,6 @@ public abstract class AbstractDataset implements TdmDataset {
 				d.setDataName(requestedObject);
 				d.setValues(readObject(requestedType, requestedObject));
 				return d;
-
 			}
 		}
 		return null;

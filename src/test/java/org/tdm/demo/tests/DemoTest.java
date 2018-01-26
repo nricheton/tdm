@@ -149,4 +149,14 @@ public class DemoTest {
 		Assert.assertTrue(set.size() > 1);
 	}
 
+	@Test
+	public void test9() throws IOException {
+
+		TestData dataId = tdm.create()//
+				.with("customer", map("address.city", "Honolulu"))//
+				.perform();
+
+		Assert.assertEquals("Honolulu", cServ.get(dataId.id("customer")).getAddress().getCity());
+	}
+
 }

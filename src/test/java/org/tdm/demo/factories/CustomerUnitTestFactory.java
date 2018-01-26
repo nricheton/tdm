@@ -10,12 +10,13 @@ import org.tdm.core.DataFactory;
 import org.tdm.core.TestData;
 import org.tdm.demo.app.Customer;
 import org.tdm.demo.app.CustomerService;
-import org.tdm.demo.app.OrderService;
+
+import com.jayway.jsonpath.JsonPath;
 
 public class CustomerUnitTestFactory implements DataFactory {
 
 	CustomerService customerService;
-	
+
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
 	}
@@ -26,20 +27,22 @@ public class CustomerUnitTestFactory implements DataFactory {
 
 	public void create(TestData data, String type, Map<String, Object> values) {
 
-		Customer c = customerService.create(UUID.randomUUID() + "@test.org", (String)values.get("firstName"),
-				(String)values.get("lastName"));
-		
+		Customer c = customerService.create(UUID.randomUUID() + "@test.org", (String) values.get("firstName"),
+				(String) values.get("lastName"));
+
 		Boolean enabled = null;
-		if( values.get("enabled") instanceof Boolean ) {
+		if (values.get("enabled") instanceof Boolean) {
 			enabled = (Boolean) values.get("enabled");
-		} else if(  values.get("enabled") instanceof String) {
+		} else if (values.get("enabled") instanceof String) {
 			enabled = Boolean.valueOf((String) values.get("enabled"));
 		}
 		c.setEnabled(enabled);
-		c.setPassword((String)values.get("password"));
+		c.setPassword((String) values.get("password"));
 		data.add(type, c.getEmail());
+
+		customerService.setAddress(c.getEmail(), (String) values.get("address.street"),
+				(String) values.get("address.postalCode"), (String) values.get("address.city"));
+
 	}
-
-
 
 }

@@ -1,7 +1,14 @@
-{ 
-    "firstName" : "Mike",
-    "lastName" : "Brown",
- 	"enabled" : true,  
-   	"password" : "password", 
-   	"groups" : [ "admin" ]
+{
+	"firstName": "Mike",
+	"lastName": "Brown",
+	"enabled": true,
+	"address": {
+		"street": "44 Shirley Ave.",
+		"city": "West Chicago",
+		"postalCode": "IL 60185"
+	},
+	"password": "password",
+	"groups": [
+		"admin"
+	]
 }
