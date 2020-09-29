@@ -1,0 +1,39 @@
+{
+	"tdm:format": "multi",
+	"customer": [
+		{
+			"tdm:name": "cust",
+			"firstName": "John",
+			"lastName": "Doe",
+			"enabled": true,
+			"password": "password",
+			"groups": [
+				"user"
+			]
+		},
+		{
+			"tdm:name": "cust2",
+			"tdm:from-template": "customer/mikeAdmin"
+		}
+	],
+	"order": [
+		{
+			"customer": "data:from-object:cust.id",
+			"product": "Computer",
+			"count": 2,
+			"dateOfPurchase": "2018-01-05"
+		},
+		{
+			"customer": "data:from-object:cust2.id",
+			"product": "Computer",
+			"count": 3,
+			"dateOfPurchase": "tdm:date:-5w"
+		},
+		{
+			"customer": "data:from-object:cust.id",
+			"product": "Computer",
+			"count": 6,
+			"dateOfPurchase": "tdm:date:now"
+		}
+	]
+}

@@ -103,4 +103,11 @@ public class DemoTest {
 
 	}
 
+	@Test
+	public void testMulti() throws IOException {
+		TestData dataId = tdm.create().with("customer/withOrders").perform();
+
+		Assert.assertEquals(3, orderServ.getOrders(dataId.id("cust")).size());
+
+	}
 }

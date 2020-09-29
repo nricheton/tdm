@@ -40,6 +40,7 @@ public class Manager implements TdmManager {
 	public TestData create(String type, Map<String, Object> values) throws IOException {
 		TestData result = new TestDataImpl();
 
+		logger.info("Looking for dataset: {}", type);
 		// Get data
 		Data data = null;
 		for (TdmDataset dataset : datasets) {
@@ -48,6 +49,9 @@ public class Manager implements TdmManager {
 			if (data != null)
 				break;
 		}
+		
+		if( data == null ) throw new IllegalArgumentException("Dataset not found: type");
+		
 
 		// TODO: Support for hierarchy
 		data.getValues().putAll(values);
