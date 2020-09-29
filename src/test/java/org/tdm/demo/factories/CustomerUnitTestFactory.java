@@ -25,7 +25,7 @@ public class CustomerUnitTestFactory implements DataFactory {
 		return asList(new String[] { "customer" });
 	}
 
-	public void create(TestData data, String type, Map<String, Object> values) {
+	public void create(TestData data, String type, String name, Map<String, Object> values) {
 
 		Customer c = customerService.create(UUID.randomUUID() + "@test.org", (String) values.get("firstName"),
 				(String) values.get("lastName"));
@@ -38,7 +38,7 @@ public class CustomerUnitTestFactory implements DataFactory {
 		}
 		c.setEnabled(enabled);
 		c.setPassword((String) values.get("password"));
-		data.add(type, c.getEmail());
+		data.add(type, name, c.getEmail());
 
 		customerService.setAddress(c.getEmail(), (String) values.get("address.street"),
 				(String) values.get("address.postalCode"), (String) values.get("address.city"));

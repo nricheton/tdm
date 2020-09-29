@@ -4,7 +4,9 @@
 			"customer": [
 				"john",
 				"mikeAdmin",
-				"withOrders"
+				"withOrders",
+				"withOrders-date",
+				"withOrders-template"
 			]
 		},
 		{

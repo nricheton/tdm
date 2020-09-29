@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.tdm.core.Data;
 import org.tdm.core.TdmDataset;
-import org.tdm.core.impl.DataImpl;
 
 public abstract class AbstractDataset implements TdmDataset {
 	protected List<Map<String, Object>> objects;
@@ -16,7 +15,7 @@ public abstract class AbstractDataset implements TdmDataset {
 
 	protected abstract List<Map<String, Object>> readObjects() throws IOException;
 
-	protected abstract Map<String, Object> readObject(String type, String name) throws IOException;
+	protected abstract List<Data> readObject(String type, String name) throws IOException;
 
 	public List<Map<String, Object>> getObjects() {
 		return objects;
@@ -26,7 +25,7 @@ public abstract class AbstractDataset implements TdmDataset {
 		objects = readObjects();
 	}
 
-	public Data getData(String type) throws IOException {
+	public List<Data> getData(String type) throws IOException {
 
 		String requestedType = type;
 		String requestedObject = null;
@@ -41,18 +40,16 @@ public abstract class AbstractDataset implements TdmDataset {
 			if (o.containsKey(requestedType)) {
 
 				// Random object
-
 				List<String> objectList = (List<String>) o.get(type);
 
 				if (requestedObject == null) {
 					requestedObject = objectList.get((int) (Math.random() * objectList.size()));
 
 				}
-				DataImpl d = new DataImpl();
-				d.setType(requestedType);
-				d.setDataName(requestedObject);
-				d.setValues(readObject(requestedType, requestedObject));
-				return d;
+				
+				
+			
+				return readObject(requestedType, requestedObject);
 			}
 		}
 		return null;

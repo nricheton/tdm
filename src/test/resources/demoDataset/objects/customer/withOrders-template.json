@@ -3,13 +3,17 @@
 	"customer": [
 		{
 			"tdm:name": "cust",
-			"firstName": "Garth",
-			"lastName": "Algar",
+			"firstName": "John",
+			"lastName": "Doe",
 			"enabled": true,
 			"password": "password",
 			"groups": [
 				"user"
 			]
+		},
+		{
+			"tdm:name": "cust2",
+			"tdm:from-template": "customer/mikeAdmin"
 		}
 	],
 	"order": [
@@ -20,16 +24,16 @@
 			"dateOfPurchase": "2018-01-05"
 		},
 		{
-			"customer": "tdm:id-of:cust",
+			"customer": "tdm:id-of:cust2",
 			"product": "Computer",
 			"count": 3,
-			"dateOfPurchase": "2018-01-05"
+			"dateOfPurchase": "tdm:date:-5w"
 		},
 		{
 			"customer": "tdm:id-of:cust",
 			"product": "Computer",
 			"count": 6,
-			"dateOfPurchase": "2018-01-05"
+			"dateOfPurchase": "tdm:date:now"
 		}
 	]
 }
