@@ -17,6 +17,15 @@ public class CustomerService {
 
 	}
 
+	public void setAddress(String email, String street, String postalCode, String city) {
+		Customer c = this.get(email);
+		Address a = new Address();
+		a.setCity(city);
+		a.setPostalCode(postalCode);
+		a.setStreet(street);
+		c.setAddress(a);
+	}
+
 	public void enable(String email, boolean enabled) {
 		get(email).setEnabled(enabled);
 	}

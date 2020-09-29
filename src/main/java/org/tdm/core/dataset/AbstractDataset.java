@@ -28,24 +28,31 @@ public abstract class AbstractDataset implements TdmDataset {
 
 	public Data getData(String type) throws IOException {
 
+		String requestedType = type;
+		String requestedObject = null;
+		if (type.contains("/")) {
+			requestedType = type.split("/")[0];
+			requestedObject = type.split("/")[1];
+		}
+
 		// Locate object
 		for (Map<String, Object> o : getObjects()) {
 
-			if (o.containsKey(type)) {
+			if (o.containsKey(requestedType)) {
 
 				// Random object
 
 				List<String> objectList = (List<String>) o.get(type);
 
-				// Get first object
-				String objectName = objectList.get(0);
+				if (requestedObject == null) {
+					requestedObject = objectList.get((int) (Math.random() * objectList.size()));
 
+				}
 				DataImpl d = new DataImpl();
-				d.setType(type);
-				d.setDataName(objectName);
-				d.setValues(readObject(type, objectName));
+				d.setType(requestedType);
+				d.setDataName(requestedObject);
+				d.setValues(readObject(requestedType, requestedObject));
 				return d;
-
 			}
 		}
 		return null;

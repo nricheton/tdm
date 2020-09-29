@@ -4,6 +4,8 @@ import static org.tdm.core.Maps.map;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.security.auth.login.CredentialException;
 
@@ -51,6 +53,11 @@ public class DemoTest {
 		tdm.init();
 	}
 
+	/**
+	 * Basic usage, no data customization.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test1() throws IOException {
 		TestData dataId = tdm.create().with("customer").perform();
@@ -81,6 +88,11 @@ public class DemoTest {
 		Assert.assertEquals("Mike", cServ.get(dataId.id("customer")).getFirstName());
 	}
 
+	/**
+	 * Creating multiple data at once.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test5() throws IOException {
 		TestData dataId = tdm.create()//
@@ -91,16 +103,60 @@ public class DemoTest {
 		Assert.assertEquals("Mike", cServ.get(dataId.id("customer")).getFirstName());
 		Assert.assertNotNull(cServ.get(dataId.id("customer2")));
 		Assert.assertNotNull(cServ.get(dataId.id("customer3")));
-
 	}
 
+	/**
+	 * Creating data with several lines, linking to objects of previous lines.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test6() throws IOException {
 		TestData dataId = tdm.create().with("customer").perform();
 		dataId.addAll(tdm.create().with("order", map("customer", dataId.id("customer"))).perform());
 
 		Assert.assertEquals(1, orderServ.getOrders(dataId.id("customer")).size());
+	}
 
+	/**
+	 * Ensure we can target a specific object.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void test7() throws IOException {
+		TestData dataId = tdm.create().with("customer/mikeAdmin").perform();
+
+		Assert.assertEquals("Mike", cServ.get(dataId.id("customer")).getFirstName());
+	}
+
+	/**
+	 * Ensure any customer can be created (different values returned when creating
+	 * 100x the same object)
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void test8() throws IOException {
+
+		Set<String> set = new HashSet<String>();
+
+		for (int i = 0; i < 100; i++) {
+			TestData dataId = tdm.create().with("customer").perform();
+			set.add(cServ.get(dataId.id("customer")).getFirstName());
+		}
+
+		Assert.assertTrue(set.size() > 1);
+	}
+
+	@Test
+	public void test9() throws IOException {
+
+		TestData dataId = tdm.create()//
+				.with("customer", map("address.city", "Honolulu"))//
+				.perform();
+
+		Assert.assertEquals("Honolulu", cServ.get(dataId.id("customer")).getAddress().getCity());
 	}
 
 	@Test

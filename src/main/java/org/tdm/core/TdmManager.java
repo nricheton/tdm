@@ -6,17 +6,38 @@ import java.util.Map;
 
 public interface TdmManager {
 
+	/**
+	 * Data factories is custom code to create each type of data object. Usually
+	 * uses code or services from application under tests.
+	 * 
+	 * @param factories
+	 */
 	void setDataFactories(List<DataFactory> factories);
-	
-	void setDatasets( TdmDataset... datasets );
+
+	/**
+	 * Data sources used to get data to be created.
+	 * 
+	 * @param datasets
+	 */
+	void setDatasets(TdmDataset... datasets);
+
+	/**
+	 * Perform tdm initialization.
+	 * 
+	 * Must be used after setting datasets and data factories, and before first
+	 * create call.
+	 * 
+	 * @throws IOException
+	 */
 	void init() throws IOException;
-	
+
+	/**
+	 * Get a builder to create a or several data objects.
+	 * 
+	 * @return
+	 */
 	TdmBuilder create();
-	
-	@Deprecated
-	TestData create( String type ) throws IOException; 
-	@Deprecated
-	TestData create( String type , Map<String,Object> values) throws IOException; 
-	TestData create( String[] type , Map<String,Object>[] values) throws IOException; 
-	
+
+	TestData create(String[] type, Map<String, Object>[] values) throws IOException;
+
 }

@@ -27,17 +27,13 @@ public class Manager implements TdmManager {
 		this.datasets = datasets;
 	}
 
-	public TestData create(String type) throws IOException {
-		return create(type, new HashMap<String, Object>());
-	}
-
 	public void init() throws IOException {
 		for (TdmDataset d : datasets) {
 			d.init();
 		}
 	}
 
-	public TestData create(String type, Map<String, Object> values) throws IOException {
+	protected TestData create(String type, Map<String, Object> values) throws IOException {
 		TestData result = new TestDataImpl();
 
 		logger.info("Looking for dataset: {}", type);
@@ -59,7 +55,7 @@ public class Manager implements TdmManager {
 
 		for (DataFactory f : factories) {
 			if (f.getTypes().contains(data.getType())) {
-				f.create(result, type, data.getValues());
+				f.create(result, data.getType(), data.getValues());
 			}
 		}
 
