@@ -25,7 +25,7 @@ public class OrderUnitTestFactory implements DataFactory {
 		return asList(new String[] { "order" });
 	}
 
-	public void create(TestData data, String type, Map<String, Object> values) throws IOException {
+	public void create(TestData data, String type, String name, Map<String, Object> values) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYY-MM-DD");
 		Order c;
 		try {
@@ -35,7 +35,7 @@ public class OrderUnitTestFactory implements DataFactory {
 			throw new IOException(e);
 		}
 
-		data.add(type, String.valueOf(c.getId()));
+		data.add(type, name, String.valueOf(c.getId()));
 	}
 
 }

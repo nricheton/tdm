@@ -2,6 +2,7 @@
 	"firstName": "John",
 	"lastName": "Doe",
 	"enabled": true,
+
 	"address": {
 		"street": "514 S. Magnolia St.",
 		"city": "Orlando",

@@ -9,5 +9,7 @@ public interface Data {
 	String getType();
 	String getDataName();
 
+	void setDataName(String name);
+	
 	Map<String, Object> getValues();
 }

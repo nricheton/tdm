@@ -7,8 +7,8 @@ import java.util.Map;
 public interface TdmManager {
 
 	/**
-	 * Data factories is custom code to create each type of data object. Usually
-	 * uses code or services from application under tests.
+	 * Data factories are custom code to create each type of data object in YOUR
+	 * application. Usually uses code or services from application under tests.
 	 * 
 	 * @param factories
 	 */
@@ -40,4 +40,5 @@ public interface TdmManager {
 
 	TestData create(String[] type, Map<String, Object>[] values) throws IOException;
 
+	List<Data> getObjectFromDataset(String type, Map<String, Object> values) throws IOException;
 }

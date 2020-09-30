@@ -29,7 +29,7 @@ public class CustomerUnitTestFactory implements DataFactory {
 		return asList(new String[] { "customer" });
 	}
 
-	public void create(TestData data, String type, Map<String, Object> values) throws IOException {
+	public void create(TestData data, String type, String name, Map<String, Object> values) throws IOException {
 		String json = mapper.writeValueAsString(values);
 		ReadContext ctx = JsonPath.parse(json);
 
@@ -44,7 +44,8 @@ public class CustomerUnitTestFactory implements DataFactory {
 		}
 		c.setEnabled(enabled);
 		c.setPassword(ctx.read("$.password", String.class));
-		data.add(type, c.getEmail());
+		
+		data.add(type, name, c.getEmail());
 
 		customerService.setAddress(c.getEmail(), ctx.read("$.address.street", String.class),
 				ctx.read("$.address.postalCode", String.class), ctx.read("$.address.city", String.class));

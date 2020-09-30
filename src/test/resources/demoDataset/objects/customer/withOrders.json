@@ -1,0 +1,40 @@
+{
+	"tdm:format": "multi",
+	"customer": [
+		{
+			"tdm:name": "cust",
+			"firstName": "Garth",
+			"lastName": "Algar",
+			"enabled": true,
+			"password": "password",
+			"groups": [
+				"user"
+			],
+			"address": {
+				"street": "514 S. Magnolia St.",
+				"city": "Orlando",
+				"postalCode": "FL 32806"
+			}
+		}
+	],
+	"order": [
+		{
+			"customer": "tdm:id-of:cust",
+			"product": "Computer",
+			"count": 2,
+			"dateOfPurchase": "2018-01-05"
+		},
+		{
+			"customer": "tdm:id-of:cust",
+			"product": "Computer",
+			"count": 3,
+			"dateOfPurchase": "2018-01-05"
+		},
+		{
+			"customer": "tdm:id-of:cust",
+			"product": "Computer",
+			"count": 6,
+			"dateOfPurchase": "2018-01-05"
+		}
+	]
+}
