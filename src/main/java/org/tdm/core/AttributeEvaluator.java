@@ -2,6 +2,7 @@ package org.tdm.core;
 
 /**
  * Handler for attribute values => custom behavior
+ *  @author Nicolas Richeton <nicolas.richeton@gmail.com>
  */
 public interface AttributeEvaluator {
 

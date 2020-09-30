@@ -7,6 +7,10 @@ import java.util.Map;
 import org.tdm.core.Data;
 import org.tdm.core.TdmDataset;
 
+/**
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public abstract class AbstractDataset implements TdmDataset {
 	protected List<Map<String, Object>> objects;
 
@@ -46,9 +50,7 @@ public abstract class AbstractDataset implements TdmDataset {
 					requestedObject = objectList.get((int) (Math.random() * objectList.size()));
 
 				}
-				
-				
-			
+
 				return readObject(requestedType, requestedObject);
 			}
 		}

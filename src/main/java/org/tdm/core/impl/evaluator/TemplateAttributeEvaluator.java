@@ -9,6 +9,15 @@ import org.tdm.core.Data;
 import org.tdm.core.TdmManager;
 import org.tdm.core.TestData;
 
+/**
+ * Allow to create an object from another dataset : "tdm:from-template" : "myobject" or  "tdm:from-template" : "myobject/dataset"
+ * 
+ * <p>
+ * Only the first object of the dataset is used.
+ * 
+ * tdm:name
+ *
+ */
 public class TemplateAttributeEvaluator implements AttributeEvaluator {
 	private static String TEMPLATE = "tdm:from-template";
 	private TdmManager manager = null;

@@ -8,6 +8,20 @@ import java.util.regex.Pattern;
 import org.tdm.core.TestData;
 import org.tdm.core.ValueEvaluator;
 
+/**
+ * Handle runtime evaluation of tdm:date. <p>
+ * 
+ * <p>Examples
+ * <ul>
+ * <li>tdm:date:now</li>
+ * <li>tdm:date:+1d</li>
+ * <li>tdm:date:-5w</li>
+ * <li>tdm:date:+6m</li>
+ * <li>tdm:date:-1y</li>
+ * </ul>
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public class DateValueEval implements ValueEvaluator {
 	private static String DATE = "tdm:date:";
 	private Pattern pattern = Pattern.compile("([\\-\\+])([0-9]+)([dwmy])");

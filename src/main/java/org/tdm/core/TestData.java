@@ -1,5 +1,9 @@
 package org.tdm.core;
 
+/**
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public interface TestData {
 	String id(String item);
 

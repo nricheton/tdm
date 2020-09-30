@@ -5,6 +5,10 @@ import java.util.Map;
 
 import org.tdm.core.TestData;
 
+/**
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public class TestDataImpl implements TestData {
 	private String[] stringArray = {};
 
@@ -29,7 +33,7 @@ public class TestDataImpl implements TestData {
 
 		data.put(typeName, id);
 		dataType.put(typeName, type);
-		
+
 		if (name != null) {
 			dataCustomName.put(typeName, name);
 			dataAlt.put(name, id);
@@ -39,11 +43,11 @@ public class TestDataImpl implements TestData {
 	}
 
 	public String id(String item) {
-		
-		String result = data.get(item); 
-		if( result == null )
+
+		String result = data.get(item);
+		if (result == null)
 			result = dataAlt.get(item);
-		
+
 		return result;
 	}
 

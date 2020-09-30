@@ -26,7 +26,7 @@ import com.jayway.jsonpath.JsonPath;
 /**
  * Test Data Manager main implementation.
  * 
- *
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
  */
 public class Manager implements TdmManager {
 	org.slf4j.Logger logger = LoggerFactory.getLogger(Manager.class);
@@ -42,6 +42,9 @@ public class Manager implements TdmManager {
 	TdmDataset[] datasets;
 	ObjectMapper mapper = new ObjectMapper();
 
+	/**
+	 * Factories can be changed at runtime.
+	 */
 	public void setDataFactories(List<DataFactory> factories) {
 		this.factories = factories;
 	}
@@ -73,20 +76,15 @@ public class Manager implements TdmManager {
 				break;
 		}
 
-
-	
-		
 		if (dataList == null)
 			throw new IllegalArgumentException("Dataset not found: type");
-		
+
 		String json = mapper.writeValueAsString(dataList.get(0));
 		DocumentContext ctx = JsonPath.parse(json);
 
 		for (String key : values.keySet()) {
 			ctx.set("$.values." + key, values.get(key));
 		}
-
-
 
 		dataList.set(0, mapper.readValue(ctx.jsonString(), DataImpl.class));
 
@@ -98,7 +96,7 @@ public class Manager implements TdmManager {
 
 		List<Data> dataList = getObjectFromDataset(type, values);
 
-		logger.info("Dataset {}", dataList);
+		logger.debug("Dataset {}", dataList);
 		for (Data data : dataList) {
 			evaluate(data, result);
 

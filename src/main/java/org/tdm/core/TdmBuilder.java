@@ -6,6 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Build for TDM context in tests. Builder is used to define which data should
+ * be created in test.
+ * 
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public class TdmBuilder {
 	private final String[] arrayString = {};
 	private final Map<String, Object>[] arrayMap = new HashMap[0];
@@ -25,10 +32,8 @@ public class TdmBuilder {
 	/**
 	 * Add data in test context.
 	 * 
-	 * @param name
-	 *            data
-	 * @param values
-	 *            Syntax is jsonpath, with no starting $.
+	 * @param name   data
+	 * @param values Syntax is jsonpath, with no starting $.
 	 * @return
 	 */
 	public TdmBuilder with(String name, Map<String, Object> values) {

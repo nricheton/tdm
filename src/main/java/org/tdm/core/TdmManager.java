@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Main TDM implementation. 
+ * 
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public interface TdmManager {
 
 	/**

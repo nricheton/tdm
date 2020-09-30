@@ -5,9 +5,15 @@ import org.tdm.core.Data;
 import org.tdm.core.TdmManager;
 import org.tdm.core.TestData;
 
+/**
+ * Allows to set a custom object name using "tdm:name":"my-custom-name".
+ * 
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public class NameAttributeEvaluator implements AttributeEvaluator {
 	private static String NAME = "tdm:name";
-	private TdmManager manager =null;
+	private TdmManager manager = null;
 
 	@Override
 	public void setManager(TdmManager manager) {

@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Layout
  * <ul>
  * <li>dataset.json</li>
- * <li>objects/
  * <ul>
  * <li>&lt;name1&gt;/
  * <ul>
@@ -39,7 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * </li>
  * </ul>
  * 
- * @author nricheton
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
  */
 public class JsonClasspathDataset extends AbstractDataset {
 	org.slf4j.Logger logger = LoggerFactory.getLogger(JsonClasspathDataset.class);
@@ -82,32 +81,32 @@ public class JsonClasspathDataset extends AbstractDataset {
 	}
 
 	private List<Data> loadMultiFormat(String type, String name, Map<String, Object> dataset) {
-		logger.info("Loading multi dataset...");
-		List<Data> data = new ArrayList<Data>();
-		
+		logger.debug("Loading multi dataset: {} {} ... ", type, name);
 		dataset.remove("tdm:format");
 
-		for( String t : dataset.keySet()) {
-			
-			List<Map<String,Object>> objects = (List<Map<String, Object>>) dataset.get(t);
-			
-			for( Map<String,Object> obj : objects) {
-				
+		List<Data> data = new ArrayList<Data>();
+
+		for (String t : dataset.keySet()) {
+
+			List<Map<String, Object>> objects = (List<Map<String, Object>>) dataset.get(t);
+
+			for (Map<String, Object> obj : objects) {
+
 				DataImpl d = new DataImpl();
 				d.setType(t);
 				d.setDataName(name);
 				d.setValues(obj);
 				data.add(d);
 			}
-			
+
 		}
-		
+
 		return data;
 	}
 
 	private List<Data> loadSimpleFormat(String type, String name, Map<String, Object> dataset) {
-		logger.info("Loading simple dataset...");
-
+		logger.debug("Loading simple dataset: {} {} ... ", type, name);
+		dataset.remove("tdm:format");
 		DataImpl d = new DataImpl();
 		d.setType(type);
 		d.setDataName(name);

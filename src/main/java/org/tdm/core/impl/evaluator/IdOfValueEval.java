@@ -5,6 +5,8 @@ import org.tdm.core.ValueEvaluator;
 
 /**
  * tdm:id-of:xxx : Id reference from a generated object.
+ * 
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
  *
  */
 public class IdOfValueEval implements ValueEvaluator {

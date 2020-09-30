@@ -4,6 +4,10 @@ import java.util.Map;
 
 import org.tdm.core.Data;
 
+/**
+ * @author Nicolas Richeton <nicolas.richeton@gmail.com>
+ *
+ */
 public class DataImpl implements Data {
 	String type;
 	String dataName;

@@ -36,19 +36,28 @@ public class DemoTest {
 	@Before
 	public void setup() throws JsonParseException, JsonMappingException, IOException {
 		// Wiring
+		
+		// In this part, we create a sample application, with Customers, Orders and a login service. 
+		// This is were you set up your application. 
 		customerService = new CustomerService();
 		authServ = new AuthService();
 		authServ.setCustomerService(customerService);
 		orderService = new OrderService();
 
+		// Custom data factories : the adapter between YOUR code and TDM 
 		CustomerUnitTestFactory cFact = new CustomerUnitTestFactory();
 		cFact.setCustomerService(customerService);
 
 		OrderUnitTestFactory oFact = new OrderUnitTestFactory();
 		oFact.setOrderService(orderService);
 
+		// In this part, we set up TDM
 		tdm = new Manager();
+	
+		// Configure data factories
 		tdm.setDataFactories(Arrays.asList(new DataFactory[] { cFact, oFact }));
+		
+		// Configure dataset 
 		tdm.setDatasets(new JsonClasspathDataset("/demoDataset"));
 		tdm.init();
 	}
