@@ -1,6 +1,6 @@
 package org.tdm.core.impl;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.tdm.core.TestData;
@@ -12,13 +12,13 @@ import org.tdm.core.TestData;
 public class TestDataImpl implements TestData {
 	private String[] stringArray = {};
 
-	Map<String, String> data = new HashMap<String, String>();
-	Map<String, String> dataAlt = new HashMap<String, String>();
+	Map<String, String> data = new LinkedHashMap<String, String>();
+	Map<String, String> dataAlt = new LinkedHashMap<String, String>();
 
-	Map<String, Integer> dataCount = new HashMap<String, Integer>();
-	Map<String, String> dataType = new HashMap<String, String>();
-	Map<String, String> dataCustomName = new HashMap<String, String>();
-	Map<String, String> dataTypeName = new HashMap<String, String>();
+	Map<String, Integer> dataCount = new LinkedHashMap<String, Integer>();
+	Map<String, String> dataType = new LinkedHashMap<String, String>();
+	Map<String, String> dataCustomName = new LinkedHashMap<String, String>();
+	Map<String, String> dataTypeName = new LinkedHashMap<String, String>();
 
 	public TestData add(String type, String name, String id) {
 
@@ -66,6 +66,9 @@ public class TestDataImpl implements TestData {
 		return this;
 	}
 
+	/**
+	 * Same order as inserted
+	 */
 	public String[] items() {
 		return data.keySet().toArray(stringArray);
 	}

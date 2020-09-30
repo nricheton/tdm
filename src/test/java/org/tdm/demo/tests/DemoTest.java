@@ -167,7 +167,7 @@ public class DemoTest {
 	public void test9() throws IOException {
 
 		TestData testData = tdm.create()//
-				.with("customer", map("address.city", "Honolulu"))//
+				.with("customer/withOrders-template", map("address.city", "Honolulu"))//
 				.perform();
 
 		Assert.assertEquals("Honolulu", customerService.get(testData.id("customer")).getAddress().getCity());
