@@ -4,7 +4,6 @@ addons:
 language: java
 jdk:
   - openjdk11
-  - oraclejdk9
   - openjdk10
   - openjdk8
 notifications:
