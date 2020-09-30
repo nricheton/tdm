@@ -1,7 +1,6 @@
 package org.tdm.core.impl;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +12,14 @@ import org.tdm.core.TdmDataset;
 import org.tdm.core.TdmManager;
 import org.tdm.core.TestData;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+
 public class Manager implements TdmManager {
 	List<DataFactory> factories;
 	TdmDataset[] datasets;
+	ObjectMapper mapper = new ObjectMapper();
 
 	org.slf4j.Logger logger = LoggerFactory.getLogger(Manager.class);
 
@@ -45,8 +49,15 @@ public class Manager implements TdmManager {
 				break;
 		}
 
-		// TODO: Support for hierarchy
-		data.getValues().putAll(values);
+		String json = mapper.writeValueAsString(data);
+		DocumentContext ctx = JsonPath.parse(json);
+
+		for (String key : values.keySet()) {
+			ctx.set("$.values." + key, values.get(key));
+		}
+
+		data = mapper.readValue(ctx.jsonString(), DataImpl.class);
+
 		logger.info("Dataset {}", data);
 
 		for (DataFactory f : factories) {

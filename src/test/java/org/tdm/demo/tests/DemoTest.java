@@ -149,6 +149,11 @@ public class DemoTest {
 		Assert.assertTrue(set.size() > 1);
 	}
 
+	/**
+	 * Object customization with complex types.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void test9() throws IOException {
 

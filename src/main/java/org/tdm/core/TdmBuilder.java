@@ -22,6 +22,15 @@ public class TdmBuilder {
 		dataValues = new ArrayList<Map<String, Object>>();
 	}
 
+	/**
+	 * Add data in test context.
+	 * 
+	 * @param name
+	 *            data
+	 * @param values
+	 *            Syntax is jsonpath, with no starting $.
+	 * @return
+	 */
 	public TdmBuilder with(String name, Map<String, Object> values) {
 		dataNames.add(name);
 		dataValues.add(values);
